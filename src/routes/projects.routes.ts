@@ -1,7 +1,8 @@
 import { Router } from "express";
 import { ProjectController } from "../controllers/project.controller";
 import { authMiddleware } from "../middlewares/auth.middleware";
-import { isProjectOwner } from "../middlewares/authorization.middleware";
+import { isProjectOwner } from "../middlewares/project.middleware";
+
 
 const router = Router();
 

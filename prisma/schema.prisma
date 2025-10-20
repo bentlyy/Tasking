@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum MemberRole {
+  OWNER
+  COLLABORATOR
+}
+
+enum TaskStatus {
+  TODO
+  IN_PROGRESS
+  DONE
+}
+
+model User {
+  id            Int              @id @default(autoincrement())
+  email         String           @unique
+  name          String?
+  password      String
+  role          UserRole         @default(USER)
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+
+  projectsOwned Project[]        @relation("ownerProjects")
+  memberships   ProjectMember[]
+  assignedTasks Task[]           @relation("assigneeTasks")
+  createdTasks  Task[]           @relation("creatorTasks")
+}
+
+model Project {
+  id          Int             @id @default(autoincrement())
+  name        String
+  description String?
+  ownerId     Int
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  owner       User            @relation("ownerProjects", fields: [ownerId], references: [id])
+  members     ProjectMember[]
+  tasks       Task[]
+}
+
+model ProjectMember {
+  id        Int        @id @default(autoincrement())
+  projectId Int
+  userId    Int
+  role      MemberRole @default(COLLABORATOR)
+  createdAt DateTime   @default(now())
+
+  project   Project    @relation(fields: [projectId], references: [id])
+  user      User       @relation(fields: [userId], references: [id])
+
+  @@unique([projectId, userId])
+  @@index([userId])
+  @@index([projectId])
+}
+
+model Task {
+  id          Int        @id @default(autoincrement())
+  title       String
+  description String?
+  status      TaskStatus @default(TODO)
+  priority    Int?
+  dueDate     DateTime?
+  projectId   Int
+  assigneeId  Int?
+  createdById Int
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  project   Project @relation(fields: [projectId], references: [id])
+  assignee  User?   @relation("assigneeTasks", fields: [assigneeId], references: [id])
+  creator   User    @relation("creatorTasks", fields: [createdById], references: [id])
+}

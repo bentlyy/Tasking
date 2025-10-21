@@ -22,9 +22,12 @@ app.use(
 );
 app.use(morgan("dev"));
 
-// ✅ Ruta raíz ANTES del error middleware
+// ✅ Healthcheck (para Railway)
+app.get("/health", (_req, res) => res.send("ok"));
+
+// ✅ Redirección automática del root → Swagger UI
 app.get("/", (_req, res) => {
-  res.json({ message: "Task Management API 🚀" });
+  res.redirect("/api/docs");
 });
 
 // ✅ Swagger JSON
@@ -43,10 +46,10 @@ app.use(
   })
 );
 
-// ✅ Rutas de la API
+// ✅ API principal
 app.use("/api", routes);
 
-// ✅ Middleware de errores (siempre último)
+// ✅ Middleware de errores
 app.use(errorMiddleware);
 
 export default app;

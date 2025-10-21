@@ -10,7 +10,7 @@ export const swaggerOptions: swaggerJsdoc.Options = {
     },
     servers: [
       {
-        url: "http://localhost:3000/api", // Swagger usará este baseURL
+        url: "https://tasking.railway.app/api", // Swagger usará este baseURL
       },
     ],
   },

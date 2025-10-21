@@ -10,9 +10,23 @@ export const swaggerOptions: swaggerJsdoc.Options = {
     },
     servers: [
       {
-        url: "https://tasking.railway.app/api", // Swagger usará este baseURL
+        url: "https://tasking-production.up.railway.app/api",
+      },
+    ],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      },
+    },
+    security: [
+      {
+        bearerAuth: [],
       },
     ],
   },
-  apis: ["./src/routes/*.ts"], // ✅ Aquí Swagger buscará los @swagger tags
+  apis: ["./src/routes/*.ts"],
 };

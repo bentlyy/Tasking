@@ -20,7 +20,7 @@ Documentación Swagger:
 
 ## 🖥️ Captura (Swagger UI)
 
-> *(Agrega aquí tu screenshot o GIF del Swagger cuando lo tengas)*
+<img width="1102" height="576" alt="image" src="https://github.com/user-attachments/assets/485a7642-3280-4ac5-9590-8c0005ddefee" />
 
 ---
 

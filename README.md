@@ -82,12 +82,17 @@ Copiar código
 
 ## 📌 Endpoints principales
 
-| Grupo | Path base |
-|---------|----------|
-| Auth | `/api/auth` |
-| Projects | `/api/projects` |
-| Tasks | `/api/tasks` |
-| Dashboard | `/api/dashboard` |
+🛠️ Endpoints Principales
+Método	Endpoint	Descripción
+POST	/auth/register	Crear usuario
+POST	/auth/login	Login y obtención de token
+GET	/auth/profile	Perfil (requiere JWT)
+POST	/projects	Crear proyecto
+GET	/projects	Listar proyectos
+PUT	/projects/:id	Editar proyecto
+DELETE	/projects/:id	Eliminar proyecto
+POST	/tasks	Crear tarea
+GET	/tasks/by-project/:projectId	Listar tareas
 
 📌 *Endpoints completos en Swagger:*  
 https://tasking-production.up.railway.app/api/docs

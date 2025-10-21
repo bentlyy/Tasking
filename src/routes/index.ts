@@ -6,6 +6,8 @@ import dashboardRoutes from "./dashboard.routes";
 
 const router = Router();
 
+// Definir las rutas de la API
+
 router.use("/auth", authRoutes);
 router.use("/projects", projectsRoutes);
 router.use("/tasks", tasksRoutes);

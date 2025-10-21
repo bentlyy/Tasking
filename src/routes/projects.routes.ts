@@ -2,22 +2,42 @@ import { Router } from "express";
 import { ProjectController } from "../controllers/project.controller";
 import { authMiddleware } from "../middlewares/auth.middleware";
 import { isProjectOwner } from "../middlewares/project.middleware";
-
+import { validate } from "../middlewares/validate.middleware";
+import {
+  createProjectSchema,
+  updateProjectSchema,
+} from "../dtos/project.dto";
 
 const router = Router();
 
-// Rutas protegidas con JWT
+// Protegemos todas las rutas con auth
 router.use(authMiddleware);
 
-router.post("/", ProjectController.create);
+// Crear proyecto (requiere validación de body)
+router.post(
+  "/",
+  validate(createProjectSchema),
+  ProjectController.create
+);
+
+// Listar proyectos
 router.get("/", ProjectController.getAll);
+
+// Obtener proyecto por id
 router.get("/:id", ProjectController.getById);
 
-// Solo OWNER puede editar o eliminar
-router.put("/:id", isProjectOwner, ProjectController.update);
+// Actualizar proyecto (solo OWNER, con validación)
+router.put(
+  "//:id",
+  isProjectOwner,
+  validate(updateProjectSchema),
+  ProjectController.update
+);
+
+// Eliminar proyecto (solo OWNER)
 router.delete("/:id", isProjectOwner, ProjectController.delete);
 
-// Agregar miembros
+// Agregar miembro a proyecto (solo OWNER)
 router.post("/:id/members", isProjectOwner, ProjectController.addMember);
 
 export default router;

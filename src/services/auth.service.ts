@@ -1,6 +1,6 @@
 import { prisma } from "../config/prisma";
 import bcrypt from "bcrypt";
-import * as jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import { config } from "../config";
 import { RegisterDTO, LoginDTO } from "../dtos/auth.dto";
 
@@ -57,8 +57,10 @@ export class AuthService {
   private generateToken(userId: number): string {
   return jwt.sign(
     { userId },
-    config.jwtSecret!,
-    { expiresIn: config.jwtExpiresIn }
+    config.jwtSecret as string,
+    {
+      expiresIn: config.jwtExpiresIn
+    }
   );
 }
 }

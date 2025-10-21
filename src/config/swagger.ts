@@ -6,13 +6,13 @@ export const swaggerOptions: swaggerJsdoc.Options = {
     info: {
       title: "Task Management API",
       version: "1.0.0",
-      description: "API para gestión de tareas estilo Trello con Node, Express, Prisma y PostgreSQL",
+      description: "API para gestión de tareas",
     },
     servers: [
       {
-        url: "http://localhost:3000/api",
+        url: "http://localhost:3000/api", // Swagger usará este baseURL
       },
     ],
   },
-  apis: ["./src/routes/*.ts"], // <--- Aquí Swagger buscará documentación en las rutas
+  apis: ["./src/routes/*.ts"], // ✅ Aquí Swagger buscará los @swagger tags
 };

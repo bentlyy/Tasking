@@ -17,36 +17,36 @@ app.use(cors());
 app.use(
   helmet({
     contentSecurityPolicy: false,
-    crossOriginEmbedderPolicy: false, // ✅ Necesario para Swagger
+    crossOriginEmbedderPolicy: false,
   })
 );
 app.use(morgan("dev"));
 
-// ✅ JSON de la documentación
+// ✅ Ruta raíz ANTES del error middleware
+app.get("/", (_req, res) => {
+  res.json({ message: "Task Management API 🚀" });
+});
+
+// ✅ Swagger JSON
 app.get("/api/docs.json", (_req, res) => {
   res.json(swaggerSpec);
 });
 
-// ✅ UI de Swagger (le decimos dónde está el JSON)
+// ✅ Swagger UI
 app.use(
   "/api/docs",
   swaggerUi.serve,
   swaggerUi.setup(swaggerSpec, {
     swaggerOptions: {
-      url: "/api/docs.json", // ✅ Especificamos el JSON
+      url: "/api/docs.json",
     },
   })
 );
 
-// ✅ Rutas protegidas de la API
+// ✅ Rutas de la API
 app.use("/api", routes);
 
-// ✅ Middleware de errores (siempre al final)
+// ✅ Middleware de errores (siempre último)
 app.use(errorMiddleware);
-
-// ✅ Ruta raíz de prueba
-app.get("/", (_req, res) => {
-  res.json({ message: "Task Management API 🚀" });
-});
 
 export default app;

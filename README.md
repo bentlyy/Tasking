@@ -1,6 +1,6 @@
 # 📌 Task Management API
 
-Task Management API es un backend profesional inspirado en herramientas como **Trello** y **Asana**, diseñado para gestionar proyectos, tareas y colaboradores dentro de un entorno seguro con autenticación, autorización por roles y estadísticas de uso.  
+Task Management API es un backend profesional inspirado en herramientas como **Trello** y **Asana**, diseñado para gestionar proyectos, tareas y colaboradores dentro de un entorno seguro con autenticación, autorización por roles, estadísticas y capacidades de IA (mock por ahora).
 
 Este proyecto fue desarrollado con el objetivo de demostrar habilidades backend con **Node.js, TypeScript, Prisma, PostgreSQL, JWT y Docker**, ideal para entornos productivos y escalables.
 
@@ -8,13 +8,10 @@ Este proyecto fue desarrollado con el objetivo de demostrar habilidades backend 
 
 ## 🚀 Demo en Producción
 
-API disponible en Railway:
-
-🔗 https://tasking-production.up.railway.app
-
-Documentación Swagger:
-
-🔗 https://tasking-production.up.railway.app/api/docs
+| Recurso | URL |
+|---------|-----|
+| 🌍 API Deploy | https://tasking-production.up.railway.app |
+| 📌 Swagger Docs | https://tasking-production.up.railway.app/api/docs |
 
 ---
 
@@ -32,10 +29,25 @@ Documentación Swagger:
 - Estados de tarea (Pendiente, En progreso, Completada)
 - Asignación de tareas a otros usuarios
 - Roles y permisos (Owner / Collaborator)
-- Dashboard de estadísticas
-- Validaciones con Zod
-- Documentación con Swagger
+- Dashboard con estadísticas
+- Validaciones con **Zod**
+- Documentación con **Swagger**
 - Arquitectura modular y mantenible
+- **IA lista para conectar (mock actual)** → resumir tareas, generar subtareas y priorizarlas
+
+---
+
+## 🤖 IA Integrada (Mock Ready)
+
+La API incluye endpoints listos para IA:
+
+| Método | Endpoint | Descripción |
+|---------|---------|-------------|
+| `POST` | `/ai/summarize` | Genera un resumen corto basado en el texto |
+| `POST` | `/ai/subtasks` | Sugiere subtareas automáticas |
+| `GET` | `/ai/prioritize/:projectId` | Ordena tareas por prioridad |
+
+> Actualmente funciona con **Mock**. Cuando quieras activamos **OpenAI, Gemini o IA local**, sin cambiar controladores ni rutas.
 
 ---
 
@@ -48,7 +60,7 @@ Documentación Swagger:
 | **Framework** | Express |
 | **ORM** | Prisma |
 | **Base de datos** | PostgreSQL |
-| **Autenticación** | JWT + bcrypt |
+| **Auth** | JWT + Bcrypt |
 | **Validación** | Zod |
 | **Infraestructura** | Docker + Railway |
 | **Docs** | Swagger UI |
@@ -57,8 +69,7 @@ Documentación Swagger:
 
 ## 🧱 Arquitectura del Proyecto
 
-El backend sigue una arquitectura modular con las siguientes capas:
-
+```bash
 src/
 ├─ routes/
 ├─ controllers/

@@ -3,6 +3,7 @@ import authRoutes from "./auth.routes";
 import projectsRoutes from "./projects.routes";
 import tasksRoutes from "./tasks.routes";
 import dashboardRoutes from "./dashboard.routes";
+import aiRoutes from "./ai.routes";
 
 const router = Router();
 
@@ -12,5 +13,6 @@ router.use("/auth", authRoutes);
 router.use("/projects", projectsRoutes);
 router.use("/tasks", tasksRoutes);
 router.use("/dashboard", dashboardRoutes);
+router.use("/ai", aiRoutes);
 
 export default router;

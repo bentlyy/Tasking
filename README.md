@@ -17,7 +17,10 @@ Este proyecto fue desarrollado con el objetivo de demostrar habilidades backend 
 
 ## 🖥️ Captura (Swagger UI)
 
-<img width="1102" height="576" alt="image" src="https://github.com/user-attachments/assets/485a7642-3280-4ac5-9590-8c0005ddefee" />
+<img width="1816" height="283" alt="Captura de pantalla 2025-10-21 231344" src="https://github.com/user-attachments/assets/29d7eadd-7184-4b4b-98d4-73700791330a" />
+<img width="1808" height="157" alt="Captura de pantalla 2025-10-21 231414" src="https://github.com/user-attachments/assets/8f15eeef-ddde-4b9c-9c63-5b3f6169c60d" />
+<img width="1806" height="490" alt="Captura de pantalla 2025-10-21 231431" src="https://github.com/user-attachments/assets/f7e16d47-0ea2-4017-9755-a510f97b3822" />
+<img width="1812" height="483" alt="Captura de pantalla 2025-10-21 231444" src="https://github.com/user-attachments/assets/600d8957-ce31-450f-9b5a-f7fa63f0f951" />
 
 ---
 
